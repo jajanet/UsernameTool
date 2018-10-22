@@ -1,0 +1,76 @@
+Username Tool - webscraping using beautiful soup with 3 separate mechanisms for dynamic suggestions, random word generation, and checking for username availability
+
+How to run:
+- go to 'main.py' and run module
+  - should have BeautifulSoup installed 
+    - go to Python file location, then enter the following: pip install beautifulsoup4
+- OR go to repl.it link (https://repl.it/@JanetVu/UsernameToolpy) and click 'run'
+
+Short Summary:
+- check username validity and availability for a list of sites, and get dynamic username suggestions that are also valid/available for that list of sites
+
+Why the program was built this way:
+- different classes for validity checks, availability checks, and suggestions
+- related functions (ie within suggestions) have different parameters and possibly other functionality that 
+- skeleton to further implement possible future features (suggestions that start with same letter as base, adjectives, and possiblilities of adding words to the front of a root instead of the default back)
+
+
+User paths: 
+- Check availability of username 
+  - first checks validity 
+- Get guidelines for creating a valid username on all those sites
+- Change username 
+- Remove sites that user doesn't care about
+
+What the program does:
+- Username availability (1500)
+  - sites: Twitter, Instagram, Facebook, Github, Tumblr(currently broken when refactored dynamic website choices), and more can be implemented
+  - stores where the name may be available, and where it certainly is taken 
+  - detects if username is completely available or not
+- Username changes/dynamic usernames (500)
+  - custom input
+  - from suggested output 
+- Check username validity (1000)
+  - checked against given sites
+  - username restrictions of length, specific character types, and other specific criteria 
+  - types of checks
+      - simple check, where it's 'yes it works on all sites' or no
+	    - comprehensive check with list of which sites it's ok specifically
+- Generate randomized words (1000)
+  - when user cannot think of one
+  - when combining root word and other words
+- Generate dynamic username suggestions (2500) 
+  - if word is nonsensical/obsure, suggester instead bases suggestions on a similar word 
+  - combine that word to words that are related, rhyme, or are random 
+  - functionality combined with validity and availability before suggesting to a user
+    - ensures user isn't stuck with a username they definitely cannot use
+- Dynamic website list (1000)
+  - delete a website from the list of ones being checked on if it's not desired
+  - ability to remove websites from the list of ones being checked on if it's not desired
+  - also ensures current list is the only one being used for suggestions, validity, and printed guidelines 
+- Output username guidelines with number of characters that are okay, specific characters allowed, and specific exclusions
+- Continously looping program until user decides they're done
+
+
+Tentative additions:
+- Deploy as phone application with Kivy
+- Suggestions with words that start with the same letter
+  - also adjetival or descriptive words
+	
+
+Difficulties:
+- Working with the output from beautiful soup and removing the html and tags (took very long time until I	found good Stack Overflow advice) to get desired information of whether names were available
+  - making username availability work on multiple sites
+- Properly removing extraneous characters, and creating a list from the rest of the text for random and dynamic word databases
+- Finding a good word API database for dynamic suggestions and a separate one for random words
+  - making sure it worked, didn't require downloads, was dynamic, free, and parsable for data
+  - random word generation also required sites that generated many words without user interaction
+- Finding a way to suggest good words for user input that isn't a general and nonobscure word
+- Figuring out how to read whether input contains valid characters
+- Thinking of good ways to create quality outputted usernames
+- Biggest challenge: combining validity, availability, suggestions, and dynamic website and username changes
+
+
+Issues:
+- impossible to certainly check if a username taken, since banned usernames are seen as available
+	but aren't usually released by the website
